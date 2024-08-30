@@ -1,9 +1,27 @@
 /** @type {import('tailwindcss').Config} */
-export const content = [
-  "./index.html",
-  "./src/**/*.{vue,js,ts,jsx,tsx}",
-];
-export const theme = {
-  extend: {},
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities(
+        {
+          '.antialiased': {
+            '-webkit-font-smoothing': 'antialiased',
+            '-moz-osx-font-smoothing': 'grayscale',
+          },
+        },
+        ['responsive', 'hover']
+      );
+    },
+  ],
 };
-export const plugins = [];
